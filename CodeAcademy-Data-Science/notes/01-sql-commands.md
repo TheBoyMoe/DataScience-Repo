@@ -75,6 +75,11 @@ VALUES (1, 'Justin Bieber', 22);
 
 ```sql
 SELECT column_name(s) FROM table_name;
+
+SELECT * FROM table_name WHERE column_name = value;
+
+select * from celebs where id = 1;
+select * from celebs limit 10; -- limit result set to 1st 10 records
 ```
 
 `SELECT`
@@ -98,3 +103,36 @@ ADD COLUMN twitter_handle TEXT
 ```
 
 `ADD COLUMN` clause used to specify the column name and data type
+
+**Update statements**
+
+- edit and existing record/row
+
+```sql
+UPDATE table_name
+SET column_1 = new_value
+WHERE column_2 = value;
+
+UPDATE celebs
+SET twitter_handle = '@taylorswift13'
+WHERE id = 4;
+```
+
+`SET` - indicates the column to edit, and the new value to insert
+`WHERE` - clause that identifies the record to update
+
+**Delete statements**
+
+- delete one or more rows
+
+```sql
+DELETE FROM table_nam
+WHERE column_name = value;
+
+DELETE FROM celebs
+WHERE twitter_handle IS NULL;
+```
+
+`DELETE FROM` is the clause that deletes the rows
+`WHERE` used to select the appropriate rows
+`IS NULL` sql condition that returns `true` when that columns value is NULL
