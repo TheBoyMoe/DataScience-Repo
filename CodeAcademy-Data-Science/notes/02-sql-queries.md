@@ -247,3 +247,16 @@ CASE
 END AS 'Mood'
 FROM movies;
 ```
+
+**Summary**
+
+`SELECT` is the clause we use every time we want to query information from a database.
+`AS` renames a column or table.
+`DISTINCT` return unique values.
+`WHERE` filter results of the query based on conditions that you specify.
+`LIKE` return similar records, search for patterns.
+`BETWEEN` return results that are within a specific range.
+`AND` and `OR` combines multiple conditions.
+`ORDER BY` sorts the result.
+`LIMIT` specifies the maximum number of rows that the query will return.
+`CASE` creates different outputs.
