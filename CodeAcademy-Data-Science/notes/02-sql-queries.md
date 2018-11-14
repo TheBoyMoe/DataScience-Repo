@@ -217,3 +217,33 @@ from movies
 order by imdb_rating desc
 limit 3;
 ```
+
+**CASE**
+
+- used to handle `IF..THEN` logic
+
+```sql
+SELECT name,
+CASE
+ WHEN imdb_rating > 8 THEN 'Fantastic'
+ WHEN imdb_rating > 6 THEN 'Poorly Received'
+ ELSE 'Avoid at All Costs'
+END AS 'Review'
+FROM movies;
+```
+
+The above code block allows you to 'condense' the ratings to create a second column, 'Review':
+
+- Each `WHEN` tests a condition and the following THEN gives us the string if the condition is true
+- The `ELSE` gives us the string if all the above conditions are false.
+- The `CASE` statement must end with `END`
+
+```sql
+SELECT name,
+CASE
+ WHEN genre = 'romance' THEN 'Chill'
+ WHEN genre = 'comedy' THEN 'Chill'
+ ELSE 'Intense'
+END AS 'Mood'
+FROM movies;
+```
