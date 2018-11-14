@@ -68,3 +68,33 @@ VALUES (1, 'Justin Bieber', 22);
 
 - clause that indicates the data being inserted
 - in the same order as the columns
+
+**Select statements**
+
+- fetch data from a table
+
+```sql
+SELECT column_name(s) FROM table_name;
+```
+
+`SELECT`
+
+- is a clause used in every database query
+- specify one or more columns with a comma separated list
+- always return a new table called a 'Result Set'
+- use the '\*' wild card to specify all columns
+
+**Alter statements**
+
+- used to add a new column to a table
+- for rows that existed before the addition, value will to NULL
+
+```sql
+ALTER TABLE table_name
+ADD COLUMN column_name data_type
+
+ALTER TABLE celebs
+ADD COLUMN twitter_handle TEXT
+```
+
+`ADD COLUMN` clause used to specify the column name and data type
