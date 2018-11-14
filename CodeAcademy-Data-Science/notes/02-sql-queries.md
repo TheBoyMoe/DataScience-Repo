@@ -84,3 +84,50 @@ SELECT *
 FROM movies
 WHERE name LIKE 'The %';
 ```
+
+**Is Null**
+
+- unknown or missing values are indicated with NULL
+- you CAN NOT test for NULL with comparison operators such as '=' or '!='
+- instead use `IS NULL` and `IS NOT NULL`
+
+Example: filter all movies with no IMDb rating:
+
+```sql
+SELECT name, imdb_rating as 'IMDb'
+FROM movies
+WHERE imdb_rating IS NULL;
+```
+
+**Between**
+
+- used in conjunction with the `WHERE` clause to filter the result set within a certain RANGE.
+- can be used to filter numbers, strings(text) or dates
+- BETWEEN two letters is not inclusive of the 2nd letter(upto but not including)
+- BETWEEN is case sensitive
+
+Example: return movies starting with 'A', upto 'I'.
+
+```sql
+SELECT *
+FROM movies
+WHERE name BETWEEN 'A' AND 'J';
+```
+
+- BETWEEN two numbers is inclusive of the 2nd number, up to and including
+
+Example: return movies from 1990 upto and including 1999
+
+```sql
+SELECT *
+FROM movies
+WHERE year BETWEEN 1990 AND 1999;
+```
+
+Example: all the movies released in the 1970's
+
+```sql
+select *
+from movies
+where year between '1970' and '1979';
+```
