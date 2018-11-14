@@ -187,3 +187,20 @@ and genre = 'action'
 or year > 2014
 and genre = 'comedy';
 ```
+
+**ORDER BY**
+
+- sort the returned result set either alphabetically or numerically
+- `DESC` -> 'Z-A', '9-0', `ASC` -> 'A-Z', '0-9'
+
+Note:
+
+- `ORDER BY` ALWAYS appears after `WHERE`, whe `WHERE` is used
+- the column that you `ORDER BY` does not have to be one of the columns being displayed
+
+```sql
+select name, imdb_rating as 'IMDb'
+from movies
+where imdb_rating > 8.0
+order by year desc;
+```
