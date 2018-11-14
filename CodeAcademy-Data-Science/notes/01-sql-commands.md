@@ -2,6 +2,10 @@
 
 [CodeAcademy SQLite Command Cheatsheet](https://www.codecademy.com/articles/sql-commands)
 
+A relational database is a database that organizes information into one or more tables or `relations`.
+
+A table is a collection of data organized into rows and columns.
+
 ## SQL Introduction
 
 **SQL Data types**
@@ -71,7 +75,7 @@ VALUES (1, 'Justin Bieber', 22);
 
 **Select statements**
 
-- fetch data from a table
+- fetch data from a table- query a table.
 
 ```sql
 SELECT column_name(s) FROM table_name;
@@ -136,3 +140,21 @@ WHERE twitter_handle IS NULL;
 `DELETE FROM` is the clause that deletes the rows
 `WHERE` used to select the appropriate rows
 `IS NULL` sql condition that returns `true` when that columns value is NULL
+
+**Constraints**
+
+- add a constraint/restriction on how a column can be used(define how a column can be used)
+
+```sql
+CREATE TABLE celebs (
+  id INTEGER PRIMARY KEY,
+  name TEXT UNIQUE,
+  date_of_birth TEXT NOT NULL,
+  date_of_death TEXT DEFAULT 'Not Applicable'
+);
+```
+
+`PRIMARY KEY` - used to uniquely identify a row, your prevented from inserting another row with the same value
+`UNIQUE` - similar to primary key, except a table can have many unique values but only one primary key
+`NOT NULL` - column MUST have a value, prevented from inserting a row without a value for the column
+`DEFAULT` - value applied, if none is supplied
