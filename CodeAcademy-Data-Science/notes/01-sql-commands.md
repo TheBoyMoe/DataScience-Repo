@@ -40,7 +40,8 @@ CREATE TABLE table_name (
 `column_1 data_type`
 
 - defines each column
-- is a parameter, the column name and it's data type that are passed as an argument
+- pass in one or more parameters
+- each parameter is a column name and it's data type that are passed as an argument
 
 ```sql
 CREATE TABLE celebs (
@@ -49,3 +50,21 @@ CREATE TABLE celebs (
    age INTEGER
 );
 ```
+
+**Insert statements**
+
+- inserts a new row/record into the table
+
+```sql
+INSERT INTO celebs (id, name, age)
+VALUES (1, 'Justin Bieber', 22);
+```
+
+`INSERT INTO`
+
+- clause that adds a new record to the specified table
+
+`VALUES`
+
+- clause that indicates the data being inserted
+- in the same order as the columns
