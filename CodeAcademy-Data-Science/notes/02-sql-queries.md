@@ -191,7 +191,7 @@ and genre = 'comedy';
 **ORDER BY**
 
 - sort the returned result set either alphabetically or numerically
-- `DESC` -> 'Z-A', '9-0', `ASC` -> 'A-Z', '0-9'
+- `DESC` -> 'Z-A', '9-0' (high-low), `ASC` -> 'A-Z', '0-9' (low-high)
 
 Note:
 
@@ -203,4 +203,17 @@ select name, imdb_rating as 'IMDb'
 from movies
 where imdb_rating > 8.0
 order by year desc;
+```
+
+**LIMIT**
+
+- clause that caps the number of records returned(max number returned) - limits size of the data set returned
+- ALWAYS appears at the end of a query
+- not all SQL database implementations supports it.
+
+```sql
+select *
+from movies
+order by imdb_rating desc
+limit 3;
 ```
