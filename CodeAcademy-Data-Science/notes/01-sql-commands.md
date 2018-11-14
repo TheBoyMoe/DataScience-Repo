@@ -130,7 +130,7 @@ WHERE id = 4;
 - delete one or more rows
 
 ```sql
-DELETE FROM table_nam
+DELETE FROM table_name
 WHERE column_name = value;
 
 DELETE FROM celebs
