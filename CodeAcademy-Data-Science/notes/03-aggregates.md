@@ -108,3 +108,18 @@ from fake_apps
 group by price
 having count(*) > 10;
 ```
+
+**Formating Time**
+SQL includes the `strftime()` method for formating datetime results.
+It takes two arguments, format and the column:
+
+`strftime('%d %m %Y, %H : %M', timestamp)`
+
+If the timestamp format is YYYY-MM-DD HH:MM:SS
+
+- %Y returns the year (YYYY)
+- %m returns the month (01-12)
+- %d returns the day of the month (1-31)
+- %H returns 24-hour clock (00-23)
+- %M returns the minute (00-59)
+- %S returns the seconds (00-59)
