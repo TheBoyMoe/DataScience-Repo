@@ -1,6 +1,6 @@
 # Handling Multiple Tables in SQl
 
-**JOIN**
+**JOIN/INNER JOIN**
 
 We use `JOIN`s to combine 2 tables in sql.
 The combined table only includes rows(with all the values from both tables) that match the `ON` condition, i.e. where the two fields being compared are equal.
