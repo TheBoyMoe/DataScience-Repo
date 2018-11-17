@@ -158,3 +158,32 @@ CREATE TABLE celebs (
 `UNIQUE` - similar to primary key, except a table can have many unique values but only one primary key
 `NOT NULL` - column MUST have a value, prevented from inserting a row without a value for the column
 `DEFAULT` - value applied, if none is supplied
+
+**Copy an SQL Table**
+
+Use the `CREATE...AS` command to create a copy of an existing table, e.g. copy over only certain columns, use '\*' to make an exact copy.
+
+```sql
+CREATE TABLE TestTable AS
+SELECT customername, contactname
+FROM customers;
+```
+
+To copy only specific rows based on a condition:
+
+```sql
+CREATE TABLE new_table_name AS
+SELECT column1, column2,...
+FROM existing_table_name
+WHERE ....;
+```
+
+References:
+[SQL commands](https://www.w3schools.com/sql/default.asp)
+
+**Rename a Table**
+
+```sql
+ALTER TABLE [existing_table_name]
+RENAME TO [new_table_name];
+```

@@ -1,7 +1,11 @@
-  select * from trips;
-select * from riders;
-select * from riders2;
-select * from cars;
+select *
+from trips;
+select *
+from riders;
+select *
+from riders2;
+select *
+from cars;
 
 --select *
 --from riders
