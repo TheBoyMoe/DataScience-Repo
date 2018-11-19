@@ -20,6 +20,60 @@ Selecting an element that does not exist throws an `IndexError: list index out o
 
 Select the lst element with the index `-1`, e.g. `list[-1]`
 
+**Inserting elements**
+`.insert()` - insert an element at the specified index, in-place - mutates the original list.
+
+First arg is the index, 2nd the element.
+
+```py
+>>> lst = [1,2,3,4,5,6,7,8]
+>>> lst.insert(3, 12)
+>>> print(lst)
+[1, 2, 3, 12, 4, 5, 6, 7, 8]
+```
+
+**Remove elements**
+`.remove()` - remove the specified element, mutates the original list.
+
+```py
+>>> lst = [1,2,3,12,4,5,6,7,8]
+>>> lst.remove(12) # specific element
+>>> print(lst)
+[1, 2, 3, 4, 5, 6, 7, 8]
+```
+
+`.pop()` - removes the specified element if the index is provided, otherwise removes the last element. Mutates the list and returns the element removed.
+
+```py
+>>> lst = [1,2,3,4,5,6,7,8]
+>>> lst.pop(4) # element index
+5
+>>> print(lst)
+[1, 2, 3, 4, 6, 7, 8]
+>>> lst.pop()
+8
+>>> print(lst)
+[1, 2, 3, 4, 6, 7]
+```
+
+`del` keyword removes the element, specify the index. Mutates the original list.
+
+```py
+>>>lst = [1, 2, 3, 4, 6, 7]
+>>> del lst[2]
+>>> print(lst)
+[1, 2, 4, 6, 7]
+```
+
+If you don't supply an index value, `del` removes the whole list
+
+```py
+>>>lst = [1, 2, 4, 6, 7]
+>>> del lst
+>>> print(lst)
+NameError: name 'lst' is not defined
+```
+
 **Slicing lists**
 We can slice lists using the following syntax, `list[start:end]`
 
@@ -102,6 +156,15 @@ When sorting lists of tuples, `.sort()` compares the first element in each tuple
 >>>pizzas.sort()
 >>>print(pizzas)
 [(1, 'cheese'), (2, 'mushrooms'), (2, 'olives'), (2, 'pepperoni'), (3, 'sausage'), (6, 'pineapple'), (7, 'anchovies')]
+```
+
+**Check if a item is in a list**
+Use the `in` keyword to determine if a particular item can be found in a list, returns a boolean
+
+```py
+lst = [1,3,5,7,9,10]
+if 1 in lst:
+ // do something
 ```
 
 ## List examples
