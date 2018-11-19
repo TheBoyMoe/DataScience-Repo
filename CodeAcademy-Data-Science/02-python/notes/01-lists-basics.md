@@ -20,9 +20,16 @@ print(names_and_dogs_names)
 # printing the result returns the objects location in RAM
 <zip object at 0x7f1631e86b48>
 
-# use the list() to view the result
+# use the list() to convert the object to a list
 print(list(names_and_dogs_names))
 [('Jenny', 'Max'), ('Alex', 'Dr. Doggy DDS'), ('Sam', 'Carter'), ('Grace', 'Ralph')]
+```
+
+Note: use the zip() and list() methods to create a list of tuples
+
+```py
+my_list = list(zip(list1, list2)) # returns a list to which you can then append tuples
+my_list.append(('value 1', 'value 2'))
 ```
 
 **Combine lists**
@@ -43,6 +50,25 @@ Combine 2 or more lists with '+'
 >>> list4 = list3 + [9,10,11]
 >>> list4
 [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+```
+
+Example of combining lists using 'zip' and '+'
+
+```py
+last_semester_gradebook = [("politics", 80), ("latin", 96), ("dance", 97), ("architecture", 65)]
+
+subjects = ['physics', 'calculus', 'poetry', 'history']
+grades = [98, 97, 85, 88]
+subjects.append('computer science')
+grades.append(100)
+
+gradebook = list(zip(subjects, grades))
+gradebook.append(('visual arts', 93))
+
+print(gradebook)
+
+full_gradebook = gradebook + last_semester_gradebook
+print(full_gradebook)
 ```
 
 **Creating a range**
