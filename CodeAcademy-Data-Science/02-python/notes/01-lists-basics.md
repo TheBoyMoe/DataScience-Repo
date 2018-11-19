@@ -5,7 +5,7 @@ Lists in python are ordered and mutable, you can have duplicate members (equival
 - can be of mixed data types
 
 **List methods**
-append() - add items it the end of the list
+`.append()` - add items it the end of the list, mutates the original list, called on the list object.
 
 **combine Lists using ZIP**
 Takes 2 (or more) lists as inputs and returns a List of tuples, each tuple containing the corresponding elements from each input list, i.e., first tuple will contain the elements with index 0, and so on.

@@ -89,3 +89,98 @@ you can also sort lists with `sorted()`, which returns a NEW list, leaving the o
 >>> print(names)
 ['Xander', 'Buffy', 'Angel', 'Willow', 'Giles']
 ```
+
+When sorting lists of tuples, `.sort()` compares the first element in each tuple.
+
+```py
+>>>toppings = ['pepperoni', 'pineapple', 'cheese', 'sausage', 'olives', 'anchovies', 'mushrooms']
+>>>prices= [2,6,1,3,2,7,2]
+>>>pizzas = list(zip(prices, toppings))
+>>>print(pizzas)
+[(2, 'pepperoni'), (6, 'pineapple'), (1, 'cheese'), (3, 'sausage'), (2, 'olives'), (7, 'anchovies'), (2, 'mushrooms')]
+
+>>>pizzas.sort()
+>>>print(pizzas)
+[(1, 'cheese'), (2, 'mushrooms'), (2, 'olives'), (2, 'pepperoni'), (3, 'sausage'), (6, 'pineapple'), (7, 'anchovies')]
+```
+
+## List examples
+
+```py
+#Write your function here
+def double_index(lst, index):
+	try:
+		value = lst[index] * 2
+		lst[index] = value
+		return lst
+	except IndexError:
+		return lst
+
+#Uncomment the line below when your function is done
+print(double_index([3, 8, -10, 12], 2))
+```
+
+Remove elements from list, returning the 'remainder
+
+```py
+#Write your function here
+def remove_middle(lst, start, end):
+  front = lst[:start]
+  back = lst[end + 1:]
+  return front + back
+
+#Uncomment the line below when your function is done
+print(remove_middle([4, 8, 15, 16, 23, 42], 1, 3))
+```
+
+If there are an odd number of elements in lst, the function should return the middle element. If there are an even number of elements, the function should return the average of the middle two elements.
+
+```py
+#Write your function here
+def middle_element(lst):
+ num = len(lst)
+ if num % 2 == 0:
+   print(lst[int(num/2) - 1], lst[int(num/2) ])
+   return (lst[int(num/2) - 1] + lst[int(num/2)])/2
+ else:
+   return lst[int(num/2)]
+
+#Uncomment the line below when your function is done
+print(middle_element([5, 2, -10, -4, 4, 5]))
+```
+
+The function should add the last two elements of lst together and append the result to lst. It should do this process three times and then return lst.
+
+For example, if lst started as [1, 1, 2], the final result should be [1, 1, 2, 3, 5, 8].
+
+```py
+#Write your function here
+def append_sum(lst):
+  last_two = lst[-2:]
+  sum = last_two[0] + last_two[-1]
+  lst.append(sum)
+  last_two = lst[-2:]
+  sum = last_two[0] + last_two[-1]
+  lst.append(sum)
+  last_two = lst[-2:]
+  sum = last_two[0] + last_two[-1]
+  lst.append(sum)
+  return lst
+
+#Uncomment the line below when your function is done
+print(append_sum([1, 1, 2]))
+```
+
+The function should return a list of every third number between start and 100 (inclusive). For example, every_three_nums(91) should return the list [91, 94, 97, 100]. If start is greater than 100, the function should return an empty list.
+
+```py
+#Write your function here
+def every_three_nums(start):
+  if start > 100:
+    return []
+  else:
+  	return list(range(start, 103, 3))
+
+#Uncomment the line below when your function is done
+print(every_three_nums(91))
+```
