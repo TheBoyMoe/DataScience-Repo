@@ -167,6 +167,18 @@ if 1 in lst:
  // do something
 ```
 
+## List Method Summary
+
+`len(list)` - returns the list length
+`.append(elm)` - add elemnet to the end of the list
+`.count(elm)` - returns the number of times the specified element occurs in the lis
+`.index(elm)` - returns the index of the 1st occurrence of the specified element, otherwise returns `ValueError`.
+`.insert(index, elm)` - inserts element at specified index
+`.pop(index)/.pop()` - removes element at the specified index, otherwise removes the last element.
+`.sort()` - sorts list lexiographically
+`.reverse()` - reverses list order
+`.clear()` - empties a list, leaving []
+
 ## List examples
 
 ```py
