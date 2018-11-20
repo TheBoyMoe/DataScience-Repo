@@ -3,10 +3,10 @@
 The statistical concepts that we'll cover include:
 
 - Mean - is the average
-- Median - value lying in the mid-point(middle value) of the set (Mode is the value that occurs most often)
+- Median - value lying in the mid-point(middle value) of the set that has been ordered from lowest to highest. If the length of our dataset was an even number, the median would be the value halfway between the two central values. (Mode is the value that occurs most often)
 - Percentiles - determine the value a given percentage of observations lie below, 75% of values lie below 4.265
 - Interquartile Range
-- Outliers - sort the data set, look for any outliers
+- Outliers - values that lie outside of the majority.
 - Standard Deviation - a value expressing by how much the members of a group differ from the mean for the group(determine how similar or different the members of the dataset are)
 
 We'll be analyzing single-variable datasets.
@@ -45,3 +45,16 @@ class_year = np.array([1967, 1949, 2004, 1997, 1953, 1950, 1958, 1974, 1987, 200
 millenials = np.mean(class_year >= 2005)
 print(millenials) # percentage of millenials 0.21
 ```
+
+**Outliers**
+
+The meancan be heavily influenced by outliers in a data set. They can skew data and lead to errors. They can also be useful in pointing to errors in data collection.
+
+When we're able to identify outliers, determine if they were due to sampling error during collection or whether or not they represent a significant but real deviation from the mean.
+
+One quick way to identify outliers is to sort the data using `np.sort()`
+
+Once sorted, calculate the median(which is NOT affected by outliers), `np.median()` - important for identifying 'skewed' data sets(those whose values are not distributed evenly)
+
+- compare it with the mean
+- compare this value with the lowest and largest values in the dataset.
