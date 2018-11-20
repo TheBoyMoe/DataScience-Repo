@@ -122,6 +122,14 @@ Like python lists you can use negative indices, and select multiple elements wit
 
 Specify both the `row` and the `column` index(rows start from zero)
 
+NOTE:
+
+In a 2-D array, the axes correspond to the interior arrays in the following way:
+
+axis=0 are values that share an index (in the same column) and axis=1 are values share an array (in the same row) - the answer is flipped!
+
+We can also think of axis=0 as the columns and axis=1 as the rows.
+
 ```py
 a = np.array([[32, 15, 6, 9, 14],
              [12, 10, 5, 23, 1],
