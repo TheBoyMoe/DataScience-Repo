@@ -13,11 +13,21 @@ Start by importing the NumPy package at the top of your file:
 
 Numpy uses an `array` data structure to organise data items.
 
-- can be any data type, including strings, numbers and other arrays
+- can be any data type, including strings, numbers and other arrays - MUST be same data type, otherwise numpy will try and upcast the value, e.g. ints cast to floats.
 - transform a regular list into a NumPy array by using `.array()`
+- common data types(dtype) include int8/16/32/64, float16/32/64/128, bool and string(fixed length)
+- special numerical types nan(NaN) and inf(Infinity) - use isnan() and isinf() to identify nan and inf values, do not use ==.
 
 ```py
+# create an numpy array from a python list
 my_array = np.array([1,2,3,4])
+```
+
+To explicitly set the data type, use the `dtype` keyword
+
+```py
+>>>my_array = np.array([1,2,3,4,5], dtype='float32)
+[1., 2., 3., 4., 5.]
 ```
 
 Normally we'll import data directly into np arrays from csv files using the `.genfromtxt()`
@@ -29,6 +39,8 @@ csv_array = np.genfromtxt('sample.csv', delimiter=',')
 **Performing operations on NumPy arrays**
 
 Numpy arrays are more efficient than lists when performing operations. Numpy arrays allow you to perform 'element-wise operations', e.g. addition on elements in the array directly.
+
+Note: these operations depend on ALL the elements in the arrays being of the SAME type
 
 ```py
 # With a list
