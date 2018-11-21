@@ -58,3 +58,49 @@ Once sorted, calculate the median(which is NOT affected by outliers), `np.median
 
 - compare it with the mean
 - compare this value with the lowest and largest values in the dataset.
+
+**Percentile**
+
+The Nth percentile is the point where N% of samples lie below, i.e, where 40% of samples are below is called the 40th percentile. Percentiles tell us where a particular value lies within the data set.
+
+Calculate percentile in numpy: `np.percentile(array, percentile_value)`
+
+```py
+>>> d = np.array([1, 2, 3, 4, 4, 4, 6, 6, 7,  8, 8])
+>>> np.percentile(d, 40)
+4.00
+```
+
+**Five-number summary**
+
+For every data set, once sorted from low to high determine/calculate:
+
+- the min value
+- 1st quartile (25th percentile) - np.percentile(array, 25)
+- median (50th percentile) - np.median(array) or np.percentile(array, 50)
+- 3rd quartile (75th percentile) - np.percentile(array, 75)
+- maximum value
+
+The difference between the 1st and 3rd percentiles is called the `interquartile range`. 50% of the data set will lie within this range. the smaller the value, the less 'variance' in the data set - the less spread out the data is, and vice versa.
+
+```py
+d = [1, 2, 3, 4, 4, 4, 6, 6, 7, 8, 8]
+np.percentile(d, 25)
+>>> 3.5
+np.percentile(d, 75)
+>>> 6.5
+interquartile_range = 6.5 - 3.5
+>>> 3
+```
+
+Example:
+
+```py
+movies_watched = np.array([2, 3, 8, 0, 2, 4, 3, 1, 1, 0, 5, 1, 1, 7, 2])
+
+first_quarter = np.percentile(movies_watched, 25)
+third_quarter = np.percentile(movies_watched, 75)
+
+interquartile_range = third_quarter - first_quarter
+print(interquartile_range)
+```
