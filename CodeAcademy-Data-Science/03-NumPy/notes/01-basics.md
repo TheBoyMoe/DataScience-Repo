@@ -26,7 +26,7 @@ my_array = np.array([1,2,3,4])
 To explicitly set the data type, use the `dtype` keyword
 
 ```py
->>>my_array = np.array([1,2,3,4,5], dtype='float32)
+>>>my_array = np.array([1,2,3,4,5], dtype='float32')
 [1., 2., 3., 4., 5.]
 ```
 

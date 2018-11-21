@@ -1,6 +1,6 @@
 # Statistics in NumPy
 
-The statistical concepts that we'll cover include:
+The statistical concepts covered include:
 
 - Mean - is the average
 - Median - value lying in the mid-point(middle value) of the set that has been ordered from lowest to highest. If the length of our dataset was an even number, the median would be the value halfway between the two central values. (Mode is the value that occurs most often)
@@ -93,6 +93,13 @@ interquartile_range = 6.5 - 3.5
 >>> 3
 ```
 
+NOTE: To calculate the PERCENTAGE of values that were below a certain value, do the following:
+
+```py
+>>> np.mean(d < 4)
+0.272
+```
+
 Example:
 
 ```py
@@ -103,4 +110,33 @@ third_quarter = np.percentile(movies_watched, 75)
 
 interquartile_range = third_quarter - first_quarter
 print(interquartile_range)
+```
+
+**Standard Deviation**
+
+Tells us about the variance or spread in the data(similar to interquartile range). The smaller the std deviation, the greater the clustering/variance/dispersion of the data around the mean, and vice versa. By calculating std deviation you get an idea of how representative the mean value is in relation to the entirety of the dataset.
+
+Calculate std deviation using `np.std(array)`
+
+```py
+>>> nums = np.array([65, 36, 52, 91, 63, 79])
+>>> np.std(nums)
+17.716909687891082
+```
+
+Example:
+
+```py
+pumpkin = np.array([68, 1820, 1420, 2062, 704, 1156, 1857, 1755, 2092, 1384])
+acorn_squash = np.array([20, 43, 99, 200, 12, 250, 58, 120, 230, 215])
+
+pumpkin_avg = np.mean(pumpkin)
+>>> 1431.8
+acorn_squash_avg = np.mean(acorn_squash)
+>>> 124.7
+
+pumpkin_std = np.std(pumpkin)
+>>> 611.318
+acorn_squash_std = np.std(acorn_squash)
+>>> 87.225
 ```
