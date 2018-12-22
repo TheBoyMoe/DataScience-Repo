@@ -48,7 +48,7 @@ print(millenials) # percentage of millenials 0.21
 
 **Outliers**
 
-The meancan be heavily influenced by outliers in a data set. They can skew data and lead to errors. They can also be useful in pointing to errors in data collection.
+The mean can be heavily influenced by outliers in a data set. They can skew data and lead to errors. They can also be useful in pointing to errors in data collection.
 
 When we're able to identify outliers, determine if they were due to sampling error during collection or whether or not they represent a significant but real deviation from the mean.
 
@@ -81,7 +81,7 @@ For every data set, once sorted from low to high determine/calculate:
 - 3rd quartile (75th percentile) - np.percentile(array, 75)
 - maximum value
 
-The difference between the 1st and 3rd percentiles is called the `interquartile range`. 50% of the data set will lie within this range. the smaller the value, the less 'variance' in the data set - the less spread out the data is, and vice versa.
+The difference between the 1st and 3rd percentiles is called the `interquartile range`. 50% of the data set will lie within this range. The smaller the value, the less 'variance' in the data set - the less spread out the data is, and vice versa.
 
 ```py
 d = [1, 2, 3, 4, 4, 4, 6, 6, 7, 8, 8]
@@ -114,7 +114,7 @@ print(interquartile_range)
 
 **Standard Deviation**
 
-Tells us about the variance or spread in the data(similar to interquartile range). The smaller the std deviation, the greater the clustering/variance/dispersion of the data around the mean, and vice versa. By calculating std deviation you get an idea of how representative the mean value is in relation to the entirety of the dataset.
+Tells us about the variance or spread in the data(similar to interquartile range). The smaller the std deviation, the greater the clustering and the smaller the variance/dispersion of the data around the mean, and vice versa. By calculating std deviation you get an idea of how representative the mean value is in relation to the entirety of the dataset.
 
 Calculate std deviation using `np.std(array)`
 
