@@ -45,8 +45,23 @@ True
 '''
 
 # Write your code here:
+class Invoice:
+    def __init__(self, number, customer, amount):
+        self.number = number
+        self.customer = customer
+        self.amount = amount
 
+    def total_payments():
+        return self.amount
+    
+    def add_payment(amount):
+        return self.amount - amount
 
+    def amount_due():
+        pass
+
+    def is_fully_paid():
+        pass
 
 # Do not edit any code below this line!
 

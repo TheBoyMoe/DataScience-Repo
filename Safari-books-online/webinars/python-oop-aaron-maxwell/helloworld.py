@@ -31,7 +31,11 @@ Pro tips:
 '''
 
 # Write your code here:
+def hello(word):
+  return 'Hello, {}!'.format(word)
 
+def print_hello(word):
+  print(hello(word))
 
 
 # Do not edit any code below this line!
