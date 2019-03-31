@@ -453,19 +453,78 @@ WHERE name NOT LIKE 'A%';
 
 **ORDER BY**
 
-- sort the returned result set either alphabetically or numerically
-- `DESC` -> 'Z-A', '9-0' (high-low), `ASC` -> 'A-Z', '0-9' (low-high)
-
-Note:
-
+- sort the results either alphabetically or numerically, returning them in either ascending or descending order.
+- byy default results are sorted in ascending order.
+- Use `DESC` keyword to sort in descending order -> 'Z-A', '9-0' (high-low).
+- Use `ASC` keyword to sort results in ascending order -> 'A-Z', '0-9' (low-high)
 - `ORDER BY` ALWAYS appears after `WHERE`, when `WHERE` is used
 - the column that you `ORDER BY` does not have to be one of the columns being displayed
+- `ORDER BY` can sort on multiple columns, sorting on the first specified, then the next, and so on.
+-  the second column you order on only steps in when the first column is not decisive to tell the order. The second column acts as a tie breaker.
+
+The order of the columns is important! Thus the following example, sorts on birthdate first (oldest to newest) and then sorts on the names in alphabetical order.
 
 ```sql
-SELECT name, imdb_rating as 'IMDb'
+SELECT birthdate, name
+FROM people
+ORDER BY birthdate, name;
+```
+
+
+```sql
+SELECT title, imdb_rating as 'IMDb'
 FROM films
 WHERE imdb_rating > 8.0
 ORDER BY release_year DESC;
+
+-- fetch people's names, sorted alphabetically
+SELECT name
+FROM people
+ORDER BY name;
+
+-- fetch people's names, sorted by birthdate
+SELECT name
+FROM people
+ORDER BY birthdate;
+
+-- Get the title of films released in 2000 or 2012, in the order they were released.
+SELECT title
+FROM films
+WHERE release_year = 2000
+OR release_year = 2012
+ORDER BY release_year;
+
+-- Get all details for all films except those released in 2015 and order them by duration.
+SELECT *
+FROM films
+WHERE release_year <> 2015
+ORDER BY duration;
+
+-- Get the title and gross earnings for movies which begin with the letter 'M' and order the results alphabetically.
+SELECT title, gross
+FROM films
+WHERE title LIKE 'M%'
+ORDER BY title;
+
+-- Get the IMDB score and film ID for every film from the reviews table, sorted from highest to lowest score.
+SELECT imdb_score, film_id
+FROM reviews
+ORDER BY imdb_score DESC;
+
+-- Get the title and duration for every film, in order of longest duration to shortest.
+SELECT title, duration
+FROM films
+ORDER BY duration DESC;
+
+-- Get the birthdate and name of people, in order of when they were born and alphabetically by name.
+SELECT birthdate, name
+FROM people
+ORDER BY birthdate, name;
+
+-- Get the release year, duration, and title of films ordered by their release year and duration
+SELECT release_year, duration, title
+FROM films
+ORDER BY release_year, duration;
 ```
 
 **LIMIT**
