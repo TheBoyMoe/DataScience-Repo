@@ -9,20 +9,16 @@
 **AS**
 
 - keyword that allows you to rename a column using an alias
-
-```sql
-SELECT column_name AS 'alias_name'
-FROM table_name
-```
-
-NOTE:
-
 - the alias can be any thing, as long as it appears in single quotes.
 - it ONLY appears in the result set - the actual column is NOT renamed.
 
 ```sql
-select name as 'title', imdb_rating as 'IMDB'
-from movies;
+SELECT column_name AS 'alias_name'
+FROM table_name
+
+SELECT name as 'Title', imdb_rating as 'IMDB'
+FROM films
+WHERE release_year BETWEEN 2000 AND 2005;
 ```
 
 **DISTINCT**
