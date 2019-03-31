@@ -23,6 +23,7 @@ Reference:
 
 - text that the database recognises as a valid command
 - always ends in a semicolon ';'
+- sql keywords, e.g. 'SELECT', 'CREATE', 'FROM', etc are NOT case-sensitive. Common procatice to make them uppercase.
 
 ```sql
 CREATE TABLE table_name (
@@ -75,16 +76,7 @@ VALUES (1, 'Justin Bieber', 22);
 
 **Select statements**
 
-- fetch data from a table- query a table.
-
-```sql
-SELECT column_name(s) FROM table_name;
-
-SELECT * FROM table_name WHERE column_name = value;
-
-select * from celebs where id = 1;
-select * from celebs limit 10; -- limit result set to 1st 10 records
-```
+- fetch data from a table - query a table.
 
 `SELECT`
 
@@ -92,6 +84,20 @@ select * from celebs limit 10; -- limit result set to 1st 10 records
 - specify one or more columns with a comma separated list
 - always return a new table called a 'Result Set'
 - use the '\*' wild card to specify all columns
+
+```sql
+-- select a single column
+SELECT column_name FROM table_name;
+
+-- select multiple columns
+SELECT column_a, column_b FROM table_name;
+
+-- select from all columns, limit result set to 1st 10 records
+SELECT * from celebs limit 10; 
+
+SELECT * FROM table_name WHERE column_name = value;
+SELECT * from celebs where id = 1;
+```
 
 **Alter statements**
 

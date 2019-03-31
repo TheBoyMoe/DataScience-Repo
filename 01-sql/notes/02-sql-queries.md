@@ -34,9 +34,35 @@ SELECT DISTINCT tools
 FROM inventory;
 ```
 
+**COUNT**
+
+- return the number of rows in one or more columns that match the query.
+
+```sql
+-- returns the number of rows in the table
+SELECT COUNT(*)
+FROM table_name
+```
+
+Count the number of fields in a column where a value is present, i.e, are not NULL.
+
+```sql
+-- count number of birthdates, NOT NULL (number of rows that DO NOT have a NULL bithdate field)
+SELECT COUNT(birthdates)
+FROM people;
+```
+
+We can also combine `COUNT` with `DISTINCT` to count the number of unique values in a column.
+
+```sql
+-- count the number of unique values in 'country' column
+SELECT COUNT(DISTINCT country)
+FROM films;
+```
+
 **WHERE**
 
-- use the `WHERE` clause to restrict the results returned
+- use the `WHERE` clause to restrict(filter) the results returned
 - filters the result set to only include the rows where the condition is true
 - comparison operators used with `WHERE` - >, <, >=, <=, =, !=
 
