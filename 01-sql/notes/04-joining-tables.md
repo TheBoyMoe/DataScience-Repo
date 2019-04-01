@@ -89,6 +89,132 @@ SELECT c.name AS country, continent, l.name AS language, official
         USING (code)
 ```
 
+**SELF JOIN**
+
+Self join are used to compare values in a field to other values of the same field within the same table.
+
+NOTE:
+
+- you are required to alias the tables with self-joins.
+- sql will not allow same name fields, so `p1.size`and `p2.size` need to be aliased.
+
+```sql
+-- calculate the percentage increase in population from 2010 to 2015 for each country code
+SELECT p1.country_code,
+       p1.size AS size2010, 
+       p2.size AS size2015,
+       -- 1. calculate growth_perc
+       ((p2.size - p1.size)/p1.size * 100.0) AS growth_perc
+FROM populations AS p1
+  INNER JOIN populations AS p2
+    -- 4. Match on country code
+    ON p1.country_code = p2.country_code
+        -- 5. and year (with calculation)
+        AND p1.year = p2.year - 5;
+```
+
+**CASE**
+
+Often it's useful to look at a numerical field not as raw data, but instead as being in different categories or groups.
+
+You can use `CASE` with `WHEN`, `THEN`, `ELSE`, and `END` to define a new grouping field.
+
+Example 1:
+
+Using the countries table, create a new field `AS geosize_group` that groups the countries into three groups:
+
+If `surface_area` is greater than 2 million, `geosize_group` is `'large'`.
+If `surface_area` is greater than 350 thousand but not larger than 2 million, `geosize_group` is `'medium'`.
+Otherwise, `geosize_group` is `'small'`.
+
+```sql
+SELECT name, continent, code, surface_area,
+  -- 1. First case
+  CASE WHEN surface_area > 2000000 THEN 'large'
+    -- 2. Second case
+    WHEN surface_area > 350000 THEN 'medium'
+    -- 3. Else clause + end
+    ELSE 'small' END
+    -- 4. Alias name
+    AS geosize_group
+-- 5. From table
+FROM countries;
+```
+
+Example 2:
+
+Using the populations table focused only for the `year` 2015, create a new field `AS popsize_group` to organize population `size` into
+
+`'large'` (> 50 million),
+`'medium'` (> 1 million), and
+`'small'` groups.
+Select only the country code, population size, and this new `popsize_group` as fields.
+
+```sql
+SELECT country_code, size,
+    -- 1. First case
+    CASE WHEN size > 50000000 THEN 'large'
+        -- 2. Second case
+        WHEN size > 1000000 THEN 'medium'
+        -- 3. Else clause + end
+        ELSE 'small' END
+        -- 4. Alias name
+        AS popsize_group
+-- 5. From table
+FROM populations
+-- 6. Focus on 2015
+WHERE year = 2015;
+```
+
+Use `INTO` to save the result of the previous query as `pop_plus`.
+
+Then, include another query below your first query to display all the records in `pop_plus` using `SELECT * FROM pop_plus`; so that you generate results.
+
+```sql
+SELECT country_code, size,
+  CASE WHEN size > 50000000 THEN 'large'
+    WHEN size > 1000000 THEN 'medium'
+    ELSE 'small' END
+    AS popsize_group
+-- 1. Into table
+INTO pop_plus
+FROM populations
+WHERE year = 2015;
+
+-- 2. Select all columns of pop_plus
+SELECT *
+FROM pop_plus
+```
+
+Keep the first query intact that creates `pop_plus` using `INTO`.
+Write a query to join `countries_plus AS c` on the left with `pop_plus AS p` on the right matching on the country code fields.
+Sort the data based on `geosize_group`, in ascending order so that large appears on top.
+Select the `name`, `continent`, `geosize_group`, and `popsize_group` fields.
+
+```sql
+SELECT country_code, size,
+  CASE WHEN size > 50000000
+            THEN 'large'
+       WHEN size > 1000000
+            THEN 'medium'
+       ELSE 'small' END
+       AS popsize_group
+INTO pop_plus       
+FROM populations
+WHERE year = 2015;
+
+-- 5. Select fields
+SELECT name, continent, geosize_group, popsize_group
+-- 1. From countries_plus (alias as c)
+FROM countries_plus AS c
+  -- 2. Join to pop_plus (alias as p)
+  INNER JOIN pop_plus AS p
+    -- 3. Match on country code
+    ON c.code = p.country_code
+-- 4. Order the table    
+ORDER BY geosize_group;
+```
+
 
 **LEFT JOIN**
 
