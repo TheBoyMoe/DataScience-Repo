@@ -1,14 +1,12 @@
-# Handling Multiple Tables in SQl
-
-**JOIN/INNER JOIN**
+# Inner Joins
 
 We use `JOIN`s to combine 2 tables in sql.
-The combined table only includes rows(with all the values from both tables) that match the `ON` condition, i.e. where the two fields being compared are equal the **INERSECTION**.
+The combined table only includes rows(with all the values from both tables) that match the `ON` condition, i.e. where the two fields being compared are equal the **INERSECTION** - rows that exist in both tables
 
 ```sql
 SELECT *
 FROM orders
-JOIN customers
+INNER JOIN customers
 ON orders.customer_id = customers.customer_id;
 ```
 
@@ -24,11 +22,11 @@ FROM orders
 JOIN customers
 ON orders.customer_id = customers.customer_id;
 
-select *
-from orders
-join subscriptions
-on orders.subscription_id = subscriptions.subscription_id
-where description = 'Fashion Magazine';
+SELECT *
+FROM orders
+INNER JOIN subscriptions
+ON orders.subscription_id = subscriptions.subscription_id
+WHERE description = 'Fashion Magazine';
 
 -- select countries that have both prime minister and president
 SELECT p1.country, p1.continent, prime_minister, president -- columns from both tables to display
@@ -271,31 +269,6 @@ Note:
 - we're simply creating a table with all possible combinations of the fields from each column
 - thus if you have a table with 3 rows and another with 2, 6 combinations/rows results.
 
-**UNION**
-
-SQL command that allows you to combine two tables(all rows or a selection of rows) - allows you to 'stack' one data set on top of another.
-
-Note:
-
-- Each SELECT statement within UNION must have the same number of columns
-- The columns must also have similar data types
-- The columns in each SELECT statement must also be in the same order
-
-```sql
-SELECT column_name(s) FROM table1
-UNION
-SELECT column_name(s) FROM table2;
-```
-
-```sql
-SELECT 'Customer' As Type, ContactName, City, Country
-FROM Customers
-UNION
-SELECT 'Supplier', ContactName, City, Country
-FROM Suppliers;
-```
-
-Results in a table with the 'Type', 'ContactName', 'City' and 'Country' columns.
 
 **WITH**
 
