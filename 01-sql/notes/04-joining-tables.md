@@ -3,7 +3,7 @@
 **JOIN/INNER JOIN**
 
 We use `JOIN`s to combine 2 tables in sql.
-The combined table only includes rows(with all the values from both tables) that match the `ON` condition, i.e. where the two fields being compared are equal.
+The combined table only includes rows(with all the values from both tables) that match the `ON` condition, i.e. where the two fields being compared are equal the **INERSECTION**.
 
 ```sql
 SELECT *
@@ -14,24 +14,81 @@ ON orders.customer_id = customers.customer_id;
 
 Note:
 
+- the order of the tables, e.g. left and right, does not matter.
 - the `customer_id` column appears twice in the resulting table when `SELECT *` is used.
 - because column names are often repeated across multiple tables, use the syntax table_name.column_name to be sure that our requests for columns are unambiguous. Here, we use it in the ON statement, but we can also use it in the SELECT or any other statement where we refer to column names.
-- this is a simple `JOIN` or `INNER JOIN`.
 
 ```sql
 SELECT orders.order_id, customers.customer_name
 FROM orders
 JOIN customers
- ON orders.customer_id = customers.customer_id;
-```
+ON orders.customer_id = customers.customer_id;
 
-```sql
 select *
 from orders
 join subscriptions
 on orders.subscription_id = subscriptions.subscription_id
 where description = 'Fashion Magazine';
+
+-- select countries that have both prime minister and president
+SELECT p1.country, p1.continent, prime_minister, president -- columns from both tables to display
+FROM prime_ministers AS p1 -- table on left
+INNER JOIN presidents AS p2 -- table on right
+ON p1.country = p2.country; -- specify keys you want to match on
+
+SELECT cities.name AS city, countries.name AS country, countries.region
+FROM cities
+INNER JOIN countries
+ON cities.country_code = countries.code;
 ```
+
+Instead of writing the full table name, you can use table aliasing. Use `AS` to add the alias immediately after the table name with a space. The aliased table names can then be used with the `SELECT` and `ON` statements.
+
+```sql
+SELECT c1.name AS city, c2.name AS country
+FROM cities AS c1
+INNER JOIN countries AS c2
+ON c1.country_code = c2.code;
+
+SELECT c.code AS country_code, name, year, inflation_rate
+FROM countries AS c
+INNER JOIN economies AS e
+ON c.code = e.code;
+```
+
+SQL supports the ability to combine multiple joins in a single query.
+
+```sql
+SELECT *
+FROM left_table
+  INNER JOIN right_table
+    ON left_table.id = right_table.id
+  INNER JOIN another_table
+    ON left_table.id = another_table.id;
+
+SELECT c.code, name, region, e.year, fertility_rate, unemployment_rate
+  FROM countries AS c
+  INNER JOIN populations AS p
+    ON c.code = p.country_code
+  INNER JOIN economies AS e
+    ON c.code = e.code
+    AND e.year = p.year;
+```
+
+When the column name that your joining the left and right tables are the same, e.g. both tables have a column called `id`, we can use the `USING` keyword instead of `ON`. The parentheses around the column name, e.g. `(id)` are req'd.
+
+```sql
+SELECT l.id AS id, l.val AS left_val, r.val AS right_val  
+FROM left_table AS l
+  INNER JOIN right_table AS r
+    USING (id);
+
+SELECT c.name AS country, continent, l.name AS language, official
+  FROM countries AS c
+    INNER JOIN languages AS l
+        USING (code)
+```
+
 
 **LEFT JOIN**
 
